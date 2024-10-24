@@ -1,25 +1,23 @@
 package com.vinay.leetcode;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
-//https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/
-public class Q3 {
+public class Q4 {
+//
     public static void main(String[] args) {
-        int[] nums = {4,3,2,7,8,2,3,1};
-        List<Integer> result = findDisappearedNumbers(nums);
-        System.out.println(result.toString());
 
+        int[] nums = {1,2,2,4};
+        int[] result = findErrorNums(nums);
+        System.out.println(Arrays.toString(result));
     }
 
-    public static List<Integer> findDisappearedNumbers(int[] arr) {
-
-        List<Integer> list=new ArrayList<>();
+    public static int[] findErrorNums(int[] arr)
+    {
         int i=0;
         while ( i<arr.length)
         {
             int correct=arr[i]-1;
-            if( arr[i] != arr[correct])
+            if(arr[i] != arr[correct])
             {
                 swap(arr,i,correct);
             }
@@ -33,13 +31,11 @@ public class Q3 {
         {
             if(arr[index] != index+1)
             {
-                list.add(index+1);
+                return new int[] {arr[index],index+1};
             }
         }
-        return list;
-
+        return new int[]{-1,-1};
     }
-
     public static void swap(int[] arr, int first, int last)
     {
         int temp=arr[first];
